@@ -24,11 +24,8 @@ public class LoginTest {
         driver.findElement(By.name("password")).click();
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Assertions.assertTrue(
-                driver.findElement(By.cssSelector("[data-testid='password-error']")).isDisplayed()
-        );
-
-
-        //data-testid="password-error"
+                driver.findElement(By.cssSelector("[data-testid='passor-error']")).
+                        isDisplayed(),"Email e senha são obrigatórios");
     }
 
     @AfterEach
