@@ -13,7 +13,7 @@ public class LoginTest {
     private WebDriver driver;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() { //throws Exception {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     }
@@ -24,7 +24,7 @@ public class LoginTest {
         driver.findElement(By.name("password")).click();
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Assertions.assertTrue(
-                driver.findElement(By.cssSelector("[data-testid='password-error']")).
+                driver.findElement(By.cssSelector("[data-testid=''password-error'']")).
                         isDisplayed(),"Email e senha são obrigatórios");
     }
 
