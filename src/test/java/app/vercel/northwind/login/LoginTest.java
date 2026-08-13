@@ -28,9 +28,13 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.name("email")).sendKeys("teste.com");
         driver.findElement(By.name("password")).sendKeys("Teste@123");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Assertions.assertTrue(
-                driver.findElement(By.cssSelector("[data-testid='email-error']")).
-                        isDisplayed(),"Formato de email inválido. Use: nome@dominio.com");
+
+        WebElement message = driver.findElement(By.cssSelector("[data-testid='email-error']"));
+
+        Assertions.assertTrue(message.isDisplayed());
+        Assertions.assertEquals(message.getText(),
+                "Formato de email inválido. Use: nome@dominio.com");
+
     }
 
     @Test
@@ -39,9 +43,12 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.name("email")).sendKeys("qateste@teste.com");
         driver.findElement(By.name("password")).sendKeys("Teste@123");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Assertions.assertTrue(
-                driver.findElement(By.cssSelector("[data-testid='email-error']")).
-                        isDisplayed(),"Usuário não encontrado. Verifique o email ou cadastre-se.");
+
+        WebElement message = driver.findElement(By.cssSelector("[data-testid='email-error']"));
+
+        Assertions.assertTrue(message.isDisplayed());
+        Assertions.assertEquals(message.getText(),
+                "Usuário não encontrado. Verifique o email ou cadastre-se.");
     }
 
     @Test
@@ -50,9 +57,12 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.name("email")).sendKeys("admin@qatest.com");
         driver.findElement(By.name("password")).sendKeys("teste123");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Assertions.assertTrue(
-                driver.findElement(By.cssSelector("[data-testid='password-error']")).
-                        isDisplayed(),"Email ou senha inválidos.");
+
+        WebElement message = driver.findElement(By.cssSelector("[data-testid='password-error']"));
+
+        Assertions.assertTrue(message.isDisplayed());
+        Assertions.assertEquals(message.getText(),
+                "Email ou senha inválidos");
     }
 }
 
