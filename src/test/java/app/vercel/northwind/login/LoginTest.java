@@ -4,6 +4,8 @@ import app.vercel.northwind.base.BaseTest;
 import app.vercel.northwind.utils.ScreeshotUtil;
 import app.vercel.northwind.utils.TestData;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +17,7 @@ import java.time.Duration;
 public class LoginTest extends BaseTest {
 
     @Test
+    @DisplayName("Deve exibir mensagem de erro ao tentar logar no sistema com os campos obrgatórios vazios!")
     public void testValidarCamposObgtsVazios() throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
@@ -34,6 +37,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Deve exibir mensagem de erro ao tentar logar com um e-mail no formato inválido")
     public void testValidarFormatoEmailInvalido () throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
@@ -53,6 +57,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Deve exibir mensagem de erro ao tentar logar com um usuário não cadastrado")
     public void testValidarUsuarioNaoCadastrado() throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
@@ -71,6 +76,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Deve exibir mensagem de erro ao tentar logar com uma senha incorreta")
     public void testValidarSenhaIncorreta() throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
@@ -89,6 +95,7 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
+    @DisplayName("Deve exibir mensagem de erro ao tentar logar com uma senha fora das normas aceitas")
     public void testValidarSenhaComMenosSeisCarateres() throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
@@ -107,6 +114,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Deve exibir home page com sucesso")
     public void testValidarLoginComSucesso () throws IOException {
         WebElement inputEmail = driver.findElement(By.name("email"));
         WebElement inputPassword = driver.findElement(By.name("password"));
