@@ -2,30 +2,19 @@ package app.vercel.northwind.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginUtil {
 
-    private static final String URL_LOGIN =
-            "https://northwind-test-platform.vercel.app/";
+    public static void realizarLogin(WebDriver driver, String email, String senha) {
+        driver.findElement(By.name("email")).sendKeys(email);
+        driver.findElement(By.name("password")).sendKeys(senha);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-    private LoginUtil() {
-    }
-
-    public static void acessarSistema(
-            WebDriver driver,
-            String email,
-            String senha) {
-
-        driver.get(URL_LOGIN);
-
-        WebElement inputEmail = driver.findElement(By.name("email"));
-        WebElement inputPassword = driver.findElement(By.name("password"));
-        WebElement btnLogin = driver.findElement(
-                By.xpath("//button[@type='submit']"));
-
-        inputEmail.sendKeys(email);
-        inputPassword.sendKeys(senha);
-        btnLogin.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.urlToBe("https://northwind-test-platform.vercel.app/products"));
     }
 }
