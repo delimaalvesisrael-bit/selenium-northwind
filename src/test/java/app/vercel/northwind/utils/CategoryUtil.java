@@ -32,7 +32,7 @@ public class CategoryUtil {
 
         Assertions.assertEquals(URL_PRODUCTS, driver.getCurrentUrl());
     }
-    public static void clicarNovaCategoria (WebDriver driver) {
+     public static void clicarNovaCategoria (WebDriver driver) {
         driver.get(URL_CATEGORIAS);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
