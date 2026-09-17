@@ -13,7 +13,8 @@ public class CategoryUtil {
 
     private static final String URL_LOGIN = "https://northwind-test-platform.vercel.app/";
     private static final String URL_PRODUCTS = "https://northwind-test-platform.vercel.app/products";
-    private static final String URL_CATEGORIAS = "https://northwind-test-platform.vercel.app/categorias";
+    private static final String URL_CATEGORIAS = "https://northwind-test-platform.vercel.app/categories";
+
 
     public static void realizarLogin(WebDriver driver) {
         driver.get(URL_LOGIN);
@@ -34,9 +35,10 @@ public class CategoryUtil {
     public static void clicarNovaCategoria (WebDriver driver) {
         driver.get(URL_CATEGORIAS);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(URL_CATEGORIAS));
 
         Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
     }
-}
+
+   }
