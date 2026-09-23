@@ -4,6 +4,7 @@ import app.vercel.northwind.base.BaseTest;
 import app.vercel.northwind.utils.CategoryUtil;
 import app.vercel.northwind.utils.NavigationUtil;
 import app.vercel.northwind.utils.ScreeshotUtil;
+import app.vercel.northwind.utils.WaitUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,16 +29,24 @@ public class CategoryTest extends BaseTest {
     @Test
     @DisplayName("Deve exibir mensagem de obrigatoriedade ao tentar salvar categoria sem preencher o nome")
     public void testValidarNomeCategoriaObrigatorio() throws IOException {
-        WebElement btnNovaCategoria = driver.findElement(By.cssSelector("[data-testid='add-category-btn'"));
-        WebElement inputDescricao = driver.findElement(By.cssSelector("[data-testid='category-description-input']"));
-        WebElement btnSalvar = driver.findElement(By.cssSelector("[data-testid='save-category-btn']"));
-
+        // Usando o WaitUtil para garantir que o botão está clicável
+        WebElement btnNovaCategoria = WaitUtil.esperarElementoClicavel(
+                driver, By.cssSelector("[data-testid='add-category-btn']")
+        );
         btnNovaCategoria.click();
+        // Aguarda o campo de descrição ficar visível antes de preencher
+        WebElement inputDescricao = WaitUtil.esperarElementoVisivel(
+                driver, By.cssSelector("[data-testid='category-description-input']")
+        );
         inputDescricao.sendKeys("Descrição válida para teste de categoria");
+        WebElement btnSalvar = WaitUtil.esperarElementoClicavel(
+                driver, By.cssSelector("[data-testid='save-category-btn']")
+        );
         btnSalvar.click();
-
-        WebElement message = driver.findElement(By.cssSelector("[data-testid='error-category-name']"));
-
+        // Aguarda a mensagem de erro aparecer na tela
+        WebElement message = WaitUtil.esperarElementoVisivel(
+                driver, By.cssSelector("[data-testid='error-category-name']")
+        );
         Assertions.assertTrue(message.isDisplayed());
         Assertions.assertEquals("Nome da categoria é obrigatório", message.getText());
 

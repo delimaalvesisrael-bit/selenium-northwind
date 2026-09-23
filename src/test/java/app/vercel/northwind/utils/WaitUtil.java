@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class WaitUtil {
 
-    private static final int TEMPO_ESPERA = 5;
+    private static final int TEMPO_ESPERA = 10;
 
     public static void esperarUrl(
             WebDriver driver,
