@@ -43,7 +43,7 @@ public class LoginTest extends BaseTest {
         WebElement inputPassword = driver.findElement(By.name("password"));
         WebElement btnLogin = driver.findElement(By.xpath("//button[@type='submit']"));
 
-        inputEmail.sendKeys(TestData.EMAIL_INVALIDO);
+        inputEmail.sendKeys(TestData.EMAIL_VAZIO);
         inputPassword.sendKeys(TestData.SENHA_INVALIDA);
         btnLogin.click();
 

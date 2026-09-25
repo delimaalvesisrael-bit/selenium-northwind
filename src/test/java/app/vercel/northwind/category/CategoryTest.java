@@ -29,7 +29,8 @@ public class CategoryTest extends BaseTest {
     @DisplayName("Deve exibir mensagem de obrigatoriedade ao tentar salvar categoria sem preencher o nome")
     public void testValidarNomeCategoriaObrigatorio() throws IOException {
     //    WebElement btnNovaCategoria = driver.findElement(By.cssSelector("[data-testid='add-category-btn']"));
-        WebElement inputDescricao = driver.findElement(By.cssSelector("[data-testid='category-description-input']"));
+        WebElement inputDescricao = driver.findElement(By.cssSelector
+                ("[data-testid='category-description-input']"));
         WebElement btnSalvar = driver.findElement(By.cssSelector("[data-testid='save-category-btn']"));
 
     //    btnNovaCategoria.click();

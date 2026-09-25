@@ -2,6 +2,7 @@ package app.vercel.northwind.utils;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,11 +36,23 @@ public class CategoryUtil {
      public static void clicarNovaCategoria (WebDriver driver) {
         driver.get(URL_CATEGORIAS);
 
+        WebElement btnNovaCategoria = driver.findElement(By.cssSelector("[data-testid='new-category-button']"));
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(URL_CATEGORIAS));
 
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector("[data-testid='category-button']"))).click();
+                By.cssSelector("[data-testid='new-category-button']")));
+        btnNovaCategoria.click();
+
+        Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
+    }
+
+    public static void campoBuscarCategorias (WebDriver driver) {
+        driver.get(URL_CATEGORIAS);
+
+        WebElement cpBuscaCategorias = driver.findElement(By.cssSelector("[placeholder='Buscar categorias...']"));
+        cpBuscaCategorias.sendKeys("teste");
 
         Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
     }
