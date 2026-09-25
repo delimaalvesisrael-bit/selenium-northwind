@@ -38,6 +38,9 @@ public class CategoryUtil {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(URL_CATEGORIAS));
 
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector("[data-testid='category-button']"))).click();
+
         Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
     }
 
