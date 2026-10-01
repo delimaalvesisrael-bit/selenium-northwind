@@ -24,5 +24,5 @@ public class TestData {
     public static final String TITULO_HOME_PAGE = "QA Automation Shop";
 
     //TELA GESTAO DE CATEGORIAS
-    public static final String NOME_CATEGORIA = "Israel";
+    public static final String NOME_CATEGORIA = "Teste Israel";
 }

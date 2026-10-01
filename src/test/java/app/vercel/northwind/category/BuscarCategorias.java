@@ -15,7 +15,7 @@ public class BuscarCategorias extends BaseTest{
     public void setupTest() {
         CategoryUtil.realizarLogin(driver);
         //   NavigationUtil.abrirModalCadastroCategoria(driver);
-        CategoryUtil.clicarNovaCategoria(driver);
+        CategoryUtil.campoBuscarCategorias(driver);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class BuscarCategorias extends BaseTest{
         cpBuscaCategorias.sendKeys(TestData.NOME_CATEGORIA);
 
         Assertions.assertTrue(cpBuscaCategorias.isDisplayed());
-        Assertions.assertEquals(TestData.NOME_CATEGORIA, cpBuscaCategorias.getText());
+        Assertions.assertEquals(TestData.NOME_CATEGORIA, cpBuscaCategorias.getAttribute("value"));
 
         ScreeshotUtil.capturar(driver,"CategoriaTesteIsrael");
     }

@@ -58,7 +58,7 @@ public class CategoryUtil {
         driver.get(URL_CATEGORIAS);
 
         WebElement cpBuscaCategorias = driver.findElement(By.cssSelector("[placeholder='Buscar categorias...']"));
-        cpBuscaCategorias.sendKeys("teste");
+        cpBuscaCategorias.sendKeys(cpBuscaCategorias.getText());
 
         Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
     }
