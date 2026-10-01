@@ -36,16 +36,22 @@ public class CategoryUtil {
      public static void clicarNovaCategoria (WebDriver driver) {
         driver.get(URL_CATEGORIAS);
 
-        WebElement btnNovaCategoria = driver.findElement(By.cssSelector("[data-testid='new-category-button']"));
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(URL_CATEGORIAS));
 
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector("[data-testid='new-category-button']")));
+        WebElement btnNovaCategoria = wait.until
+                (ExpectedConditions.elementToBeClickable(
+                        By.cssSelector("[data-testid='add-category-btn']")
+                    )
+                );
         btnNovaCategoria.click();
 
-        Assertions.assertEquals(URL_CATEGORIAS, driver.getCurrentUrl());
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("[data-testid='category-description-input']")
+        ));
+
     }
 
     public static void campoBuscarCategorias (WebDriver driver) {
